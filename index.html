@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEMSIS B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #e0e0e0;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .sidebar h1 {
+            font-size: 24px;
+            padding: 10px 0;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .container h2 {
+            margin-top: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        #encodedImage {
+            display: none;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+        #downloadLink {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 10px;
+        }
+        .button:hover {
+            background-color: #575757;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-image: url('https://www.ispartnersllc.com/wp-content/uploads/states-with-data-privacy-laws.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(8px);
+            z-index: -1;
+            transform: scale(1.05);
+        }
+        .hero h1, .hero p {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+            -webkit-text-fill-color: rgb(255, 255, 255);
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(0, 0, 0, 0.7);
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+        .ornament {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .ornament div {
+            max-width: 150px;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        .ornament img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+            .ornament img:hover {
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .features {
+            margin-top: 30px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .feature-icon {
+            font-size: 40px;
+            margin-right: 20px;
+            color: #4CAF50;
+        }
+        .feature-description {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Stegano B2</h1>
+        <a href="#home" onclick="showSection('home')">Beranda</a>
+        <a href="#encode" onclick="showSection('encode')">Encode</a>
+        <a href="#decode" onclick="showSection('decode')">Decode</a>
+    </div>
+
+    <div class="content">
+        <div id="home" class="container">
+            <div class="hero">
+                <h1>Selamat Datang di Steganografi</h1>
+                <p>Sembunyikan pesan Anda di dalam gambar dengan aman dan mudah.</p>
+            </div>
+            <div class="ornament">
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/previews/004/431/151/original/security-lettering-and-laptop-with-one-padlock-with-yellow-color-vector.jpg" alt="Keamanan">
+                    <p>Keamanan</p>
+                </div>
+                <div>
+                    <img src="https://png.pngtree.com/png-clipart/20201114/ourlarge/pngtree-data-privacy-day-hand-painted-white-personal-privacy-data-security-png-image_2431271.jpg" alt="Privasi">
+                    <p>Privasi</p>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-description">
+                        <h3>Pengkodean Aman</h3>
+                        <p>Alat kami memungkinkan Anda mengodekan pesan Anda dalam gambar dengan aman, memastikan bahwa hanya mereka yang memiliki akses yang dapat mendekodenya.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-description">
+                        <h3>Privasi Terjamin</h3>
+                        <p>Jaga privasi Anda dengan metode steganografi kami. Pesan tersembunyi Anda aman dari mata yang tidak diinginkan.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-description">
+                        <h3>Mudah Digunakan</h3>
+                        <p>Dengan antarmuka yang ramah pengguna, Anda dapat dengan mudah mengodekan dan mendekode pesan tanpa repot. Rasakan keajaiban steganografi!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="encode" class="container hidden">
+            <h2>Encode Teks ke dalam Gambar</h2>
+            <div class="input-group">
+                <label for="uploadImage">Unggah Gambar:</label>
+                <input type="file" id="uploadImage">
+            </div>
+            <div class="input-group">
+                <label for="secretMessage">Pesan Rahasia:</label>
+                <textarea id="secretMessage" rows="4"></textarea>
+            </div>
+            <button class="button" onclick="encodeImage()">Encode</button>
+            <img id="encodedImage" alt="Gambar Terkode">
+            <a id="downloadLink" download="encoded_image.png">Unduh Gambar Terkode</a>
+        </div>
+
+        <div id="decode" class="container hidden">
+            <h2>Decode Teks dari Gambar</h2>
+            <div class="input-group">
+                <label for="decodeImageUpload">Unggah Gambar:</label>
+                <input type="file" id="decodeImageUpload">
+            </div>
+            <button class="button" onclick="decodeImage()">Decode</button>
+            <div class="input-group">
+                <label for="decodedMessage">Pesan yang Didekode:</label>
+                <textarea id="decodedMessage" rows="4" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+
+    <script src="steganography.js"></script>
+</body>
+</html>
